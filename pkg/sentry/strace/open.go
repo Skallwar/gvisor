@@ -84,6 +84,10 @@ var OpenFlagSet = abi.FlagSet{
 		Flag: unix.O_TRUNC,
 		Name: "O_TRUNC",
 	},
+	{
+		Flag: unix.O_TMPFILE,
+		Name: "O_TMPFILE",
+	},
 }
 
 func open(val uint64) string {

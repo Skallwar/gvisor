@@ -245,14 +245,14 @@ func (f *FileAccessType) Get() interface{} {
 }
 
 // String implements flag.Value.
-func (f *FileAccessType) String() string {
-	switch *f {
+func (f FileAccessType) String() string {
+	switch f {
 	case FileAccessShared:
 		return "shared"
 	case FileAccessExclusive:
 		return "exclusive"
 	}
-	panic(fmt.Sprintf("Invalid file access type %v", *f))
+	panic(fmt.Sprintf("Invalid file access type %v", f))
 }
 
 // NetworkType tells which network stack to use.
@@ -294,8 +294,8 @@ func (n *NetworkType) Get() interface{} {
 }
 
 // String implements flag.Value.
-func (n *NetworkType) String() string {
-	switch *n {
+func (n NetworkType) String() string {
+	switch n {
 	case NetworkSandbox:
 		return "sandbox"
 	case NetworkHost:
@@ -303,7 +303,7 @@ func (n *NetworkType) String() string {
 	case NetworkNone:
 		return "none"
 	}
-	panic(fmt.Sprintf("Invalid network type %v", *n))
+	panic(fmt.Sprintf("Invalid network type %v", n))
 }
 
 // QueueingDiscipline is used to specify the kind of Queueing Discipline to
@@ -341,14 +341,14 @@ func (q *QueueingDiscipline) Get() interface{} {
 }
 
 // String implements flag.Value.
-func (q *QueueingDiscipline) String() string {
-	switch *q {
+func (q QueueingDiscipline) String() string {
+	switch q {
 	case QDiscNone:
 		return "none"
 	case QDiscFIFO:
 		return "fifo"
 	}
-	panic(fmt.Sprintf("Invalid qdisc %v", *q))
+	panic(fmt.Sprintf("Invalid qdisc %v", q))
 }
 
 func leakModePtr(v refs.LeakMode) *refs.LeakMode {
