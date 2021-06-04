@@ -196,8 +196,12 @@ type Options struct {
 // option for an FD with a fanoutID already in use by another FD for a different
 // NIC will return an EINVAL.
 //
+// Since fanoutID must be unique within the network namespace, we start with
+// the PID to avoid collisions. The only way to be sure of avoiding collisions
+// is to run in a new network namespace.
+//
 // Must be accessed using atomic operations.
-var fanoutID int32 = 0
+var fanoutID int32 = int32(unix.Getpid())
 
 // New creates a new fd-based endpoint.
 //
